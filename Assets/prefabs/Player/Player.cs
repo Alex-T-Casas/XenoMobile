@@ -12,9 +12,14 @@ public class Player : Character
     int speedHash = Animator.StringToHash("speed");
     Coroutine BackToIdleCoroutine;
     InGameUI inGameUI;
+    CameraManager cameraManager;
 
     [SerializeField] Weapon[] StartWeaponPrefabs;
     [SerializeField] Transform GunSocket;
+
+    [SerializeField] JoyStick moveStick;
+    [SerializeField] JoyStick aimStick;
+
     List<Weapon> Weapons;
     Weapon CurrentWeapon;
     int currentWeaponIndex = 0;
@@ -72,15 +77,15 @@ public class Player : Character
         movementComp = GetComponent<MovementComponent>();
         animator = GetComponent<Animator>();
         inputActions.Gameplay.CursorPos.performed += CursorPosUpdated;
-        //inputActions.Gameplay.move.performed += MoveInputUpdated;
-        //inputActions.Gameplay.move.canceled += MoveInputUpdated;
-        inputActions.Gameplay.MainAction.performed += MainActionButtonDown;
-        inputActions.Gameplay.MainAction.canceled += MainActionReleased;
+        inputActions.Gameplay.move.performed += MoveInputUpdated;
+        inputActions.Gameplay.move.canceled += MoveInputUpdated;
+        //inputActions.Gameplay.MainAction.performed += MainActionButtonDown;
+        //inputActions.Gameplay.MainAction.canceled += MainActionReleased;
         inputActions.Gameplay.Space.performed += BigAction;
         inputActions.Gameplay.NextWeapon.performed += NextWeapon;
         animator.SetTrigger("BackToIdle");
         InitializeWeapons();
-
+        cameraManager = FindObjectOfType<CameraManager>();
 
     }
 
@@ -95,14 +100,14 @@ public class Player : Character
         animator.SetTrigger("BigAction");
     }
 
-    private void MainActionReleased(InputAction.CallbackContext obj)
-    {
-        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
-    }
-
-    private void MainActionButtonDown(InputAction.CallbackContext obj)
+    private void Fire()
     {
         animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 1);
+    }
+
+    private void StopFire()
+    {
+        animator.SetLayerWeight(animator.GetLayerIndex("UpperBody"), 0);
     }
 
     private void CursorPosUpdated(InputAction.CallbackContext obj)
@@ -110,7 +115,7 @@ public class Player : Character
         movementComp.SetCursorPos(obj.ReadValue<Vector2>());
     }
 
-    /*private void MoveInputUpdated(InputAction.CallbackContext ctx)
+    private void MoveInputUpdated(InputAction.CallbackContext ctx)
     {
         Vector2 input = ctx.ReadValue<Vector2>(); //.normalised
         movementComp.SetMovementInput(input);
@@ -125,11 +130,11 @@ public class Player : Character
                 BackToIdleCoroutine = null;
             }
         }
-    }*/
+    }
 
-    public void MoveInputUpdated(Vector2 input)
+    public void UpdateMovement(Vector2 input)
     {
-        input = input.normalized;
+        
         movementComp.SetMovementInput(input);
         if (input.magnitude == 0)
         {
@@ -153,6 +158,7 @@ public class Player : Character
 
     void UpdateAnimation()
     {
+
         animator.SetFloat(speedHash, GetComponent<CharacterController>().velocity.magnitude);
         Vector3 PlayerForward = movementComp.GetPlayerDesiredLookDir();
         Vector3 PlayerMoveDir = movementComp.GetPlayerDesiredMoveDir();
@@ -169,6 +175,14 @@ public class Player : Character
     {
         base.Update();
         UpdateAnimation();
+        UpdateMoveStickInput();
+        UpdateAimStickInput();
+        UpdateCamera();
+    }
+
+    private void UpdateCamera()
+    {
+        cameraManager.UpdateCamera(transform.position, moveStick.Input, aimStick.Input.magnitude > 0);
     }
     
     public void FireTimePoint()
@@ -176,6 +190,31 @@ public class Player : Character
         if(CurrentWeapon!=null)
         {
             CurrentWeapon.Fire();
+        }
+    }
+
+    public void UpdateMoveStickInput()
+    {
+        if(moveStick != null)
+        {
+            UpdateMovement(moveStick.Input);
+        }
+    }
+
+    public void UpdateAimStickInput()
+    {
+        if (aimStick != null)
+        {
+            movementComp.SetAimInput(aimStick.Input);
+
+            if(aimStick.Input.magnitude > 0)
+            {
+                Fire();
+            }
+            else
+            {
+                StopFire();
+            }
         }
     }
 }

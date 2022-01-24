@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour
 {
     [Header("Walking")]
-    [SerializeField] float WalkingSpeed = 5f;
+    [SerializeField] float WalkingSpeed = 7f;
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] float EdgeCheckTracingDistance = 0.8f;
     [SerializeField] float EdgeCheckTracingDepth = 1f;
@@ -16,10 +16,11 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] LayerMask GroundLayerMask;
 
     Vector2 MoveInput;
+    Vector2 AimInput;
     Vector3 Velocity;
     float Gravity = -9.8f;
     CharacterController characterController;
-    bool LookAtCursor = true;
+    public bool isShooting = false;
     Vector2 CursorPos;
 
     #region Floor Follow
@@ -36,6 +37,11 @@ public class MovementComponent : MonoBehaviour
     public void SetCursorPos(Vector2 cursorPos)
     {
         CursorPos = cursorPos;
+    }
+
+    public void SetAimInput(Vector2 input)
+    {
+        AimInput = input;
     }
 
     Vector3 GetCursorDir()
@@ -96,8 +102,7 @@ public class MovementComponent : MonoBehaviour
             Velocity.y = -0.2f;
         }
 
-        Velocity.x = GetPlayerDesiredMoveDir().x * WalkingSpeed;
-        Velocity.z = GetPlayerDesiredMoveDir().z * WalkingSpeed;
+        Velocity = GetPlayerDesiredMoveDir() * WalkingSpeed;
         Velocity.y += Gravity * Time.deltaTime;
 
 
@@ -121,19 +126,34 @@ public class MovementComponent : MonoBehaviour
     }
     public Vector3 GetPlayerDesiredMoveDir()
     {
-        return new Vector3(-MoveInput.y, 0f, MoveInput.x).normalized;
+        return InputAxisToWorldDir(MoveInput);
+    }
+
+    private Vector3 InputAxisToWorldDir(Vector2 input)
+    {
+        //Debug.Log($"{input}");
+        // based on the cameras right and left
+        Vector3 CameraRight = Camera.main.transform.right;
+
+        //use cross product to find the frame up
+        Vector3 FrameUp = -Vector3.Cross(Vector3.up, CameraRight);
+
+
+
+        return CameraRight * input.x + FrameUp * input.y;
     }
 
     public Vector3 GetPlayerDesiredLookDir()
     {
-        if (LookAtCursor)
+        if (AimInput.magnitude > 0)
         {
-            return GetCursorDir();
+            return InputAxisToWorldDir(AimInput);
         } else
         {
             return GetPlayerDesiredMoveDir();
         }
     }
+
 
     void UpdateRotation()
     {
