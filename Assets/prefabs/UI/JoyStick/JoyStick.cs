@@ -7,6 +7,8 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 {
     [SerializeField] RectTransform Handle;
     [SerializeField] RectTransform Background;
+    [SerializeField] Player player;
+
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 DragPos = eventData.position;
@@ -15,6 +17,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         Debug.DrawLine(DragPos, BgPos);
 
         Handle.localPosition = Vector2.ClampMagnitude(DragPos - BgPos, Background.rect.width/2);
+        player.MoveInputUpdated(Handle.localPosition);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -26,6 +29,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         Debug.Log("Pointer Up");
         Handle.position = Background.position;
+        player.MoveInputUpdated(Handle.localPosition);
     }
 
     // Start is called before the first frame update

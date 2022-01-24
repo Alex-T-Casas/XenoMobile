@@ -72,8 +72,8 @@ public class Player : Character
         movementComp = GetComponent<MovementComponent>();
         animator = GetComponent<Animator>();
         inputActions.Gameplay.CursorPos.performed += CursorPosUpdated;
-        inputActions.Gameplay.move.performed += MoveInputUpdated;
-        inputActions.Gameplay.move.canceled += MoveInputUpdated;
+        //inputActions.Gameplay.move.performed += MoveInputUpdated;
+        //inputActions.Gameplay.move.canceled += MoveInputUpdated;
         inputActions.Gameplay.MainAction.performed += MainActionButtonDown;
         inputActions.Gameplay.MainAction.canceled += MainActionReleased;
         inputActions.Gameplay.Space.performed += BigAction;
@@ -110,9 +110,9 @@ public class Player : Character
         movementComp.SetCursorPos(obj.ReadValue<Vector2>());
     }
 
-    private void MoveInputUpdated(InputAction.CallbackContext ctx)
+    /*private void MoveInputUpdated(InputAction.CallbackContext ctx)
     {
-        Vector2 input = ctx.ReadValue<Vector2>().normalized;
+        Vector2 input = ctx.ReadValue<Vector2>(); //.normalised
         movementComp.SetMovementInput(input);
         if(input.magnitude==0)
         {
@@ -120,6 +120,24 @@ public class Player : Character
         }else
         {
             if(BackToIdleCoroutine!=null)
+            {
+                StopCoroutine(BackToIdleCoroutine);
+                BackToIdleCoroutine = null;
+            }
+        }
+    }*/
+
+    public void MoveInputUpdated(Vector2 input)
+    {
+        input = input.normalized;
+        movementComp.SetMovementInput(input);
+        if (input.magnitude == 0)
+        {
+            BackToIdleCoroutine = StartCoroutine(DelayedBackToIdle());
+        }
+        else
+        {
+            if (BackToIdleCoroutine != null)
             {
                 StopCoroutine(BackToIdleCoroutine);
                 BackToIdleCoroutine = null;
