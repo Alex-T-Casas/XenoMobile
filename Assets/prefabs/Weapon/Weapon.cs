@@ -8,10 +8,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem BulletEmitter;
     [SerializeField] float DamagePerBullet = 1;
     [SerializeField] Sprite WeaponIcon;
+    [SerializeField] float ShootingSpeed = 1.0f;
 
     public Sprite GetWeaponIcon() { return WeaponIcon; }
     public float GetDamagePerBullet() { return DamagePerBullet; }
     public GameObject Owner { set; get; }
+
+    public float GetShootingSpeed() { return ShootingSpeed; }
 
     // Start is called before the first frame update
     void Start()

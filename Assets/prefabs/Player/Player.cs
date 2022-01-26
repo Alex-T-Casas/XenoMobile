@@ -14,6 +14,7 @@ public class Player : Character
     Coroutine BackToIdleCoroutine;
     InGameUI inGameUI;
     CameraManager cameraManager;
+    bool isAlive = true;
 
     [SerializeField] Weapon[] StartWeaponPrefabs;
     [SerializeField] Transform GunSocket;
@@ -83,17 +84,30 @@ public class Player : Character
         //inputActions.Gameplay.MainAction.performed += MainActionButtonDown;
         //inputActions.Gameplay.MainAction.canceled += MainActionReleased;
         inputActions.Gameplay.Space.performed += BigAction;
-        //inputActions.Gameplay.NextWeapon.performed += NextWeapon;
+        inputActions.Gameplay.NextWeapon.performed += NextWeapon;
         animator.SetTrigger("BackToIdle");
         InitializeWeapons();
         cameraManager = FindObjectOfType<CameraManager>();
 
+        WeaponSwitcher switcher = FindObjectOfType<WeaponSwitcher>();
+        if(switcher)
+        {
+            switcher.onWeaponSwitchPressed += NextWeapon;
+        }
+
     }
 
-    public void NextWeapon()
+
+    private void NextWeapon()
     {
         currentWeaponIndex = (currentWeaponIndex + 1) % Weapons.Count;
         EquipWeapon(currentWeaponIndex);
+        animator.SetFloat("FiringSpeed", CurrentWeapon.GetShootingSpeed());
+    }
+
+    private void NextWeapon(InputAction.CallbackContext obj)
+    {
+        NextWeapon();
     }
 
     private void BigAction(InputAction.CallbackContext obj)
@@ -175,9 +189,14 @@ public class Player : Character
     new void Update()
     {
         base.Update();
-        UpdateAnimation();
-        UpdateMoveStickInput();
-        UpdateAimStickInput();
+
+        if (isAlive)
+        {
+            UpdateAnimation();
+            UpdateMoveStickInput();
+            UpdateAimStickInput();
+        }
+
         UpdateCamera();
     }
 
@@ -217,5 +236,11 @@ public class Player : Character
                 StopFire();
             }
         }
+    }
+
+    public void StopPlayerBehavior()
+    {
+        OnDisable();
+        isAlive = false;
     }
 }

@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
 
         }
         //make the actual camera follow
-        MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, cameraFollowTransform.position, 2 * MoveDamping * Time.deltaTime); //cameraFollowTransform.position;
-        MainCamera.transform.rotation = Quaternion.Lerp(MainCamera.transform.rotation, cameraFollowTransform.rotation, 2 * RotateDamping * Time.deltaTime);//cameraFollowTransform.rotation;
+        MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, cameraFollowTransform.position, ( 1- MoveDamping) * 20 * Time.deltaTime); //cameraFollowTransform.position;
+        MainCamera.transform.rotation = Quaternion.Lerp(MainCamera.transform.rotation, cameraFollowTransform.rotation, (1 - RotateDamping) * 20 * Time.deltaTime);//cameraFollowTransform.rotation;
     }
 }
