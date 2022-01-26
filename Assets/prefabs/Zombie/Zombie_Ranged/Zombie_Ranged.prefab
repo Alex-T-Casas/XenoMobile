@@ -195,6 +195,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5994103146761407755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356679960548238835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408ae5c3b4d4234aab7603de1ee3012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114531022265907074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356679960548238835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0752d7b1e93df9348a165aba0fac51dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6052010066675223959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f546577812ce48949a4d02067068bffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombie: {fileID: 5714419423577450091}
+  zombie: {fileID: -5994103146761407755}
   perceptionComp: {fileID: 6402349058754469381}
   behaviorTree: {fileID: 114531022265907074}
   HealthComp: {fileID: 7477989096082184078}
@@ -232,18 +256,6 @@ MonoBehaviour:
   PerceptionLayerMask:
     serializedVersion: 2
     m_Bits: 887
---- !u!114 &114531022265907074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356679960548238835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0752d7b1e93df9348a165aba0fac51dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8647184684927061152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,17 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PatrollingPoint: []
---- !u!114 &5714419423577450091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6250194234191930162, guid: 53a25f01160980f449be66bfb47a3d1e, type: 3}
-  m_PrefabInstance: {fileID: 1869157376202458457}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356679960548238835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8dae9b1367a6364eb5b7f5371732fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7477989096082184078 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -128436373322444073, guid: 53a25f01160980f449be66bfb47a3d1e, type: 3}
