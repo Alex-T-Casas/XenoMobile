@@ -238,8 +238,9 @@ public class Player : Character
         }
     }
 
-    public void StopPlayerBehavior()
+    public override void NoHealthLeft()
     {
+        base.NoHealthLeft();
         OnDisable();
         isAlive = false;
     }

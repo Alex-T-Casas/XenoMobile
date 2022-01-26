@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: daa96fa8d71f3414d96ff2859fe1e3fc, type: 3}
     - target: {fileID: -4503590311711321987, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: ShootingSpeed
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -4503590311711321987, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
       propertyPath: DamagePerBullet
       value: 3
       objectReference: {fileID: 0}
@@ -108,12 +112,36 @@ PrefabInstance:
       value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4850627496826347910, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850627496826347910, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 30
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6738025682524619179, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
       propertyPath: m_Name
       value: ShotGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800859860158551536, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800859860158551536, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800859860158551536, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800859860158551536, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
+      value: 0.9048786
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800859860158551536, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}
+      propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[1].value
+      value: 0.27804947
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb2fbd235f8fa74fb6df3ca4afaaea2, type: 3}

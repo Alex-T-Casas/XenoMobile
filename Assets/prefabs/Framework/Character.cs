@@ -20,33 +20,11 @@ public class Character : MonoBehaviour
         GetComponent<Animator>().SetLayerWeight(2, 1);
         int DeathStateNameHash = Animator.StringToHash("DeathState");
         GetComponent<Animator>().Play(DeathStateNameHash);
-
-        StopAILogic();
-        StopPlayerInput();
-
-        // when anim is finnished, destroy gameobj
     }
 
     public virtual void HealthChanged(int newValue, int oldValue, int maxValue, GameObject Caluse)
     {
         
-    }
-    private void StopAILogic()
-    {
-       AIController AIC = GetComponent<AIController>();
-        if(AIC != null)
-        {
-            AIC.StopAIBehavior();
-        }
-    }
-
-    private void StopPlayerInput()
-    {
-        Player player = GetComponent<Player>();
-        if(player != null)
-        {
-            player.StopPlayerBehavior();
-        }
     }
 
     public void OnDeathAnimationFinished()

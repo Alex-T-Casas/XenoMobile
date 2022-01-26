@@ -52,4 +52,14 @@ public class Zombie : Character
         previousLocation = transform.position; 
         animator.SetFloat("Speed", speed);
     }
+
+    public override void NoHealthLeft()
+    {
+        base.NoHealthLeft();
+        AIController AIC = GetComponent<AIController>();
+        if(AIC != null)
+        {
+            AIC.StopAIBehavior();
+        }
+    }
 }
