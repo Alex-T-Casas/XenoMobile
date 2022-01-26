@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -82,14 +83,14 @@ public class Player : Character
         //inputActions.Gameplay.MainAction.performed += MainActionButtonDown;
         //inputActions.Gameplay.MainAction.canceled += MainActionReleased;
         inputActions.Gameplay.Space.performed += BigAction;
-        inputActions.Gameplay.NextWeapon.performed += NextWeapon;
+        //inputActions.Gameplay.NextWeapon.performed += NextWeapon;
         animator.SetTrigger("BackToIdle");
         InitializeWeapons();
         cameraManager = FindObjectOfType<CameraManager>();
 
     }
 
-    private void NextWeapon(InputAction.CallbackContext obj)
+    public void NextWeapon()
     {
         currentWeaponIndex = (currentWeaponIndex + 1) % Weapons.Count;
         EquipWeapon(currentWeaponIndex);

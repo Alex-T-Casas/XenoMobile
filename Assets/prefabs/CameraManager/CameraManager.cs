@@ -9,8 +9,8 @@ public class CameraManager : MonoBehaviour
     private Camera MainCamera;
 
     [SerializeField] float RotateSpeed = 20.0f;
-    //[SerializeField] [Range(0, 1)] float RotateSpeed = 20.0f;
-    //[SerializeField] float RotateSpeed = 20.0f;
+    [SerializeField] [Range(0, 1)] float RotateDamping = 0.5f;
+    [SerializeField] [Range(0, 1)] float MoveDamping = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
 
         }
         //make the actual camera follow
-        MainCamera.transform.position = cameraFollowTransform.position;
-        MainCamera.transform.rotation = cameraFollowTransform.rotation;
+        MainCamera.transform.position = Vector3.Lerp(MainCamera.transform.position, cameraFollowTransform.position, 2 * MoveDamping * Time.deltaTime); //cameraFollowTransform.position;
+        MainCamera.transform.rotation = Quaternion.Lerp(MainCamera.transform.rotation, cameraFollowTransform.rotation, 2 * RotateDamping * Time.deltaTime);//cameraFollowTransform.rotation;
     }
 }
