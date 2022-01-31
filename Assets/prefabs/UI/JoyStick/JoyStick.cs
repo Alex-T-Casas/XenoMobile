@@ -25,7 +25,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         Input = Vector2.ClampMagnitude(DragPos - BgPos, Background.rect.width / 2);
         Handle.localPosition = Input;
         Input = Input / (Background.rect.width / 2);
-        Debug.Log(Input);
+        //Debug.Log(Input);
     }
 
     public void OnPointerDown(PointerEventData eventData)

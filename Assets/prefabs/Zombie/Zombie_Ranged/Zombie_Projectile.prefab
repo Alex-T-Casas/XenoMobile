@@ -46,24 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3121616501433118539, guid: 1b2861de6cf6b9f4a8c833f0fbdd505d, type: 3}
-  projSpeed: 2
+  projSpeed: 1.75
   flightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: -0.0041676844
       value: 0.0056545967
-      inSlope: 0.38547772
-      outSlope: 0.38547772
+      inSlope: 1.4763846
+      outSlope: 1.4763846
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: 0.2
-      inSlope: -0.007261142
-      outSlope: -0.007261142
+      value: 0.75
+      inSlope: -0.01180768
+      outSlope: -0.01180768
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -71,8 +71,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.4
-      outSlope: -0.4
+      inSlope: -1.5
+      outSlope: -1.5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -81,6 +81,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startPos: {fileID: 0}
+  blastRadius: 2
 --- !u!1 &841807548862295223
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,8 +109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841807548862295223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06714487, y: -0.084702015, z: -0.018840432}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3694529670107671608}
@@ -143,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9b6ffd5d9c038dd48b9c2d02e87a7e68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

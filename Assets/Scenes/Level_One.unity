@@ -1996,11 +1996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380899642936378772, guid: 1b2861de6cf6b9f4a8c833f0fbdd505d, type: 3}
       propertyPath: HitPoints
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4380899642936378772, guid: 1b2861de6cf6b9f4a8c833f0fbdd505d, type: 3}
       propertyPath: MaxHitPoints
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4642262877140712825, guid: 1b2861de6cf6b9f4a8c833f0fbdd505d, type: 3}
       propertyPath: m_Intensity
@@ -54931,7 +54931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 11.000092}
+  m_AnchoredPosition: {x: 0, y: 11.000122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1871178141
