@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class RangedZombie : Zombie
 {
+    [SerializeField] Vector3 leftHand;
+    [SerializeField] GameObject projectile;
     public override void AttackPoint()
     {
         base.AttackPoint();
 
-        Debug.Log("*trows projectile*");
+        Instantiate(projectile);
 
     }
 }
