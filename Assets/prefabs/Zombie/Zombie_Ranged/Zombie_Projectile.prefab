@@ -53,17 +53,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.0041676844
       value: 0.0056545967
-      inSlope: 1.4763846
-      outSlope: 1.4763846
+      inSlope: 1.9722514
+      outSlope: 1.9722514
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: 0.75
-      inSlope: -0.01180768
-      outSlope: -0.01180768
+      value: 1
+      inSlope: -0.013874292
+      outSlope: -0.013874292
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -71,8 +71,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.5
-      outSlope: -1.5
+      inSlope: -2
+      outSlope: -2
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startPos: {fileID: 0}
-  blastRadius: 2
+  blastRadius: 2.25
 --- !u!1 &841807548862295223
 GameObject:
   m_ObjectHideFlags: 0

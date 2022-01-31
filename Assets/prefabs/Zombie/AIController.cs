@@ -10,7 +10,11 @@ public class AIController : MonoBehaviour
     [SerializeField] BehaviorTree behaviorTree;
     [SerializeField] HealthComponent HealthComp;
     [SerializeField] float hurtRememberingTime = 3;
-    GameObject Target;
+    public GameObject Target
+    {
+        get;
+        private set;
+    }
     Coroutine HurtForgettingCoroutine;
     bool shouldRunAI = true;
     
