@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-
+    public AbilityWidget closestWidget = null;
     [SerializeField] AbilityWidget[] abilityWidgets;
     public void OnDrag(PointerEventData eventData)
     {
@@ -15,7 +15,6 @@ public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         Vector2 DragDir = (eventData.position - wheelCenter).normalized;
 
         float closestAngle = 360.0f;
-        AbilityWidget closestWidget = null;
 
         foreach (AbilityWidget widget in abilityWidgets)
         {
@@ -43,10 +42,15 @@ public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if(closestWidget != null)
+        {
+            closestWidget.ActivateAbility();
+        }
         foreach (AbilityWidget widget in abilityWidgets)
         {
             widget.SetExpand(false);
         }
+        
     }
 
     // Start is called before the first frame update

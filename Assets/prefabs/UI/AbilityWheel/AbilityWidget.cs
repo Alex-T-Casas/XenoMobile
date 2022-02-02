@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AbilityWidget : MonoBehaviour
 {
+    public HealAbility ability;
     [SerializeField] RectTransform background;
     [SerializeField] RectTransform icon;
     private float scaleSpeed = 20.0f;
@@ -14,10 +15,13 @@ public class AbilityWidget : MonoBehaviour
     [SerializeField] float HighlightedScale = 2.5f;
     private bool isExpanded;
 
+    //private bool OnCooldown;
+    //[SerializeField] float AbilityCooldown = 5.0f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ability = GetComponent<HealAbility>();
     }
 
     // Update is called once per frame
@@ -54,5 +58,22 @@ public class AbilityWidget : MonoBehaviour
      public Vector2 GetCenter()
     {
         return background.rect.center;
+    }
+
+    /*IEnumerator CooldownCoroutine()
+    {
+        OnCooldown = true;
+        yield return new WaitForSeconds(AbilityCooldown);
+        OnCooldown = false;
+    }
+
+    public void Cooldown()
+    {
+        StartCoroutine(CooldownCoroutine());
+    }*/
+
+    public void ActivateAbility()
+    {
+        ability.UseAbility();
     }
 }

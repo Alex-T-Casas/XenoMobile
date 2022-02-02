@@ -7,8 +7,8 @@ public delegate void OnNoHealthLeft();
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] int HitPoints = 10;
-    [SerializeField] int MaxHitPoints = 10;
+    [SerializeField] public int HitPoints = 10;
+    [SerializeField] public int MaxHitPoints = 10;
 
     public OnHealthChanged onHealthChanged;
     public OnNoHealthLeft noHealthLeft;
@@ -28,6 +28,17 @@ public class HealthComponent : MonoBehaviour
         if (onHealthChanged != null)
         {
             onHealthChanged.Invoke(HitPoints, oldValue, MaxHitPoints, DamageCauser);
+        }
+    }
+
+    public void Heal(int recoverd, GameObject Healer)
+    {
+        int oldValue = HitPoints;
+        HitPoints += recoverd;
+        
+        if (onHealthChanged != null)
+        {
+            onHealthChanged.Invoke(HitPoints, oldValue, MaxHitPoints, Healer);
         }
     }
 
