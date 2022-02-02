@@ -49,10 +49,14 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private void HealthChanged(int newValue, int oldValue, int maxValue, GameObject Causer)
+    private void HealthChanged(float newValue, float oldValue, float maxValue, GameObject Causer)
     {
-        PerceptionUpdated(true, Causer);
-        StartForgetingHurt(Causer);
+        if (newValue < oldValue)
+        {
+            PerceptionUpdated(true, Causer);
+            StartForgetingHurt(Causer);
+        }
+
     }
 
     private void StartForgetingHurt(GameObject Causer)

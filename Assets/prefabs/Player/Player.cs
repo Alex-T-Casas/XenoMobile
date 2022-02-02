@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Player : Character
 {
+    AbilityComponent abilityComp;
     MovementComponent movementComp;
     InputActions inputActions;
     Animator animator;
@@ -28,6 +29,17 @@ public class Player : Character
     private void Awake()
     {
         inputActions = new InputActions();
+        abilityComp = GetComponent<AbilityComponent>();
+        if(abilityComp!=null)
+        {
+            abilityComp.onNewAbilityInitialzed += NewAbilityAdded;
+        }
+    }
+
+    private void NewAbilityAdded(AbilityBase NewAbility)
+    {
+        AbilityWheel abilityWheel = FindObjectOfType<AbilityWheel>();
+        abilityWheel.AddNewAbility(NewAbility);
     }
 
     private void OnEnable()

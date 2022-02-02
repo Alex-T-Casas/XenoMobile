@@ -9,7 +9,7 @@ public class HealAbility : MonoBehaviour
     private float Health;
     private float MaxHealth;
     private bool OnCooldown;
-    [SerializeField] float AbilityCooldown = 5.0f;
+    [SerializeField] float AbilityCooldown = 10.0f;
     //[SerializeField] int HealRate = 2; //per second
     //[SerializeField] float HealAmt = 5.0f;
     private bool isHealing;
@@ -35,7 +35,7 @@ public class HealAbility : MonoBehaviour
             Heal();
             Health = player.GetComponent<HealthComponent>().HitPoints;
             
-            Cooldown();
+            //Cooldown();
         }
         else
         {
@@ -67,17 +67,18 @@ public class HealAbility : MonoBehaviour
 
     IEnumerator AddHealth()
     {
-        while (true)
+        while (!OnCooldown)
         {
             Health = player.GetComponent<HealthComponent>().HitPoints;
             if (Health < MaxHealth && isHealing)
             {
-                player.GetComponent<HealthComponent>().Heal(1, gameObject); // increase health and wait the specified time
-                yield return new WaitForSeconds(1);
+                player.GetComponent<HealthComponent>().ChangeHealth(1, gameObject); // increase health and wait the specified time
+                yield return new WaitForSeconds(0.10f);
             }
             else
             {
                 isHealing = false;
+                Cooldown();
                 yield return null;
             }
         }

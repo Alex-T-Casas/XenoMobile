@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,12 +41,18 @@ public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         }
     }
 
+    internal void AddNewAbility(AbilityBase newAblity)
+    {
+        int level = newAblity.GetLevel();
+
+        if(level - 1 < abilityWidgets.Length && level -1 >= 0)
+        {
+            abilityWidgets[level - 1].AssignAbility(newAblity);
+        }
+    }
+
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(closestWidget != null)
-        {
-            closestWidget.ActivateAbility();
-        }
         foreach (AbilityWidget widget in abilityWidgets)
         {
             widget.SetExpand(false);

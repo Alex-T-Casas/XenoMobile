@@ -58,7 +58,7 @@ public class Projectile_Script : MonoBehaviour
             GetDistFromPlayer();
             if (distFromPlayer <= blastRadius)
             {
-                player.GetComponent<HealthComponent>().TakeDamage(2, gameObject);
+                player.GetComponent<HealthComponent>().ChangeHealth(-2, gameObject);
             }
         }
         Debug.Log("Boom!");
