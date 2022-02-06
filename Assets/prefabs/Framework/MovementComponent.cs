@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void OnSpeedChanged(float newValue, float oldValue, GameObject Causer);
 public class MovementComponent : MonoBehaviour
 {
     [Header("Walking")]
@@ -22,6 +23,8 @@ public class MovementComponent : MonoBehaviour
     CharacterController characterController;
     public bool isShooting = false;
     Vector2 CursorPos;
+
+    public OnSpeedChanged onSpeedChanged;
 
     #region Floor Follow
     Transform currentFloor;
@@ -255,6 +258,17 @@ public class MovementComponent : MonoBehaviour
             characterController.Move(DeltaMove);
             transform.rotation = Quaternion.Lerp(StartRot, EndRot, timmer / transformTime);
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void SetMovementSpeed (float changeSpeed, GameObject Causer = null)
+    {
+        float oldValue = WalkingSpeed;
+        WalkingSpeed += changeSpeed;
+
+        if(onSpeedChanged != null)
+        {
+            onSpeedChanged.Invoke(WalkingSpeed, oldValue, Causer);
         }
     }
 }

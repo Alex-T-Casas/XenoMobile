@@ -60,7 +60,7 @@ Shader "Unlit/CooldownShader"
                 }
 
                 float2 dir = normalize(coord);
-                float1 angle = degrees(acos(dot(dir, float2(0, -1)))) / 360;
+                float1 angle = degrees(acos(dot(dir, float2(0, 1)))) / 360;
                
                 if (coord.x > 0)
                 {

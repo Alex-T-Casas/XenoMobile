@@ -12,6 +12,8 @@ public class AbilityWidget : MonoBehaviour
     [SerializeField] RectTransform CoolDown;
     private float scaleSpeed = 20.0f;
 
+    [SerializeField] float cooldownTime;
+
     private Vector3 GoalScale = new Vector3(1, 1, 1);
     [SerializeField] float ExpandedScale = 2.0f;
     [SerializeField] float HighlightedScale = 2.5f;

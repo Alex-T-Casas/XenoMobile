@@ -10,6 +10,7 @@ public class HealthRegen : AbilityBase
     [SerializeField] float RegenTime = 3.0f;
 
     HealthComponent healthComponent;
+    
 
     public override void Init(AbilityComponent ownerAbilityComponent)
     {
@@ -26,6 +27,7 @@ public class HealthRegen : AbilityBase
 
     private IEnumerator HealthRegenCoroutine()
     {
+        Debug.Log("Start healing");
         float RegenCounter = 0.0f;
         while(RegenCounter < RegenTime)
         {
@@ -33,5 +35,6 @@ public class HealthRegen : AbilityBase
             RegenCounter += Time.deltaTime;
             healthComponent.ChangeHealth(RegenAmount / RegenTime * Time.deltaTime, healthComponent.gameObject);
         }
+        Debug.Log("Done Healing!");
     }
 }
