@@ -18286,6 +18286,7 @@ MonoBehaviour:
   MaxStaminaLevel: 5
   abilities:
   - {fileID: 11400000, guid: 5c6b141db9bfe684a9c1d88ab9978ee4, type: 2}
+  - {fileID: 11400000, guid: 896ad33866e71544a8e2142ad43fb69a, type: 2}
 --- !u!1 &708627939
 GameObject:
   m_ObjectHideFlags: 0

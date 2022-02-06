@@ -12,27 +12,36 @@ public class AbilityWidget : MonoBehaviour
     [SerializeField] RectTransform CoolDown;
     private float scaleSpeed = 20.0f;
 
-    [SerializeField] float cooldownTime;
-
     private Vector3 GoalScale = new Vector3(1, 1, 1);
     [SerializeField] float ExpandedScale = 2.0f;
     [SerializeField] float HighlightedScale = 2.5f;
     private bool isExpanded;
 
-    Material CooldownMatt;
-    void Start()
+     Material CooldownMatt;
+    internal void Start()
     {
         CooldownMatt = Instantiate(CoolDown.GetComponent<Image>().material);
         CoolDown.GetComponent<Image>().material = CooldownMatt;
+        //CooldownMatt = CoolDown.GetComponent<Image>().material;
     }
 
-    void Update()
+    internal void Update()
     {
+
+        background.localScale = Vector3.Lerp(background.localScale, GoalScale, Time.deltaTime * scaleSpeed);
         
-            background.localScale = Vector3.Lerp(background.localScale, GoalScale, Time.deltaTime * scaleSpeed);
+        if(ability != null)
+        {
+            if (ability.IsOnCooldown == true)
+            {
+                SetCooldownProgress(ability.GetCooldownProgress());
+            }
+        }
+        
+
     }
 
-    void SetCooldownProgress(float progress)
+    internal void SetCooldownProgress(float progress)
     {
         CooldownMatt.SetFloat("_Progress", progress);
     }
