@@ -34,5 +34,12 @@ public class SpeedBoost : AbilityBase
             RegenCounter += Time.deltaTime;
             movementComponent.SetMovementSpeed(TopSpeed / BoostTime * Time.deltaTime);
         }
+        RegenCounter = 0.0f;
+        while (RegenCounter < 2)
+        {
+            yield return new WaitForEndOfFrame();
+            RegenCounter += Time.deltaTime;
+            movementComponent.SetMovementSpeed(-TopSpeed / 2 * Time.deltaTime);
+        }
     }
 }

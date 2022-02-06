@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9af235efd0bd04282e96a6d3edcd89, type: 3}
   m_Name: Player Speed Boost
   m_EditorClassIdentifier: 
-  CooldownTime: 7
+  CooldownTime: 8
   Icon: {fileID: 21300000, guid: 641b10df40e9f6544bff8ea83fb58bc3, type: 3}
   AbilityLevel: 2
   CooldownProgess: 0
-  TopSpeed: 5
+  TopSpeed: 4
   BoostTime: 3

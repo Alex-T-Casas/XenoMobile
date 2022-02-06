@@ -52967,6 +52967,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbIlityWheel
       objectReference: {fileID: 0}
+    - target: {fileID: 3571500246870981050, guid: fc0efce86b91e184985454c8469612c6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571500246870981050, guid: fc0efce86b91e184985454c8469612c6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6629666
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571500246870981050, guid: fc0efce86b91e184985454c8469612c6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.34877178
+      objectReference: {fileID: 0}
     - target: {fileID: 4128715674053253348, guid: fc0efce86b91e184985454c8469612c6, type: 3}
       propertyPath: m_Color.b
       value: 0.45993233
