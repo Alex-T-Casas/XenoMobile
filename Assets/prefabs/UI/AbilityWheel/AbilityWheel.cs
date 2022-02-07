@@ -8,6 +8,9 @@ public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 {
     public AbilityWidget closestWidget = null;
     [SerializeField] AbilityWidget[] abilityWidgets;
+
+    public float maxStamina = 5f;
+    
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 widgetPos = GetComponent<RectTransform>().position;
@@ -38,6 +41,25 @@ public class AbilityWheel : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         foreach(AbilityWidget widget in abilityWidgets)
         {
             widget.SetExpand(true);
+        }
+    }
+
+    internal void UpdateStamina(float newValue)
+    {
+
+        for(int i = 0; i < abilityWidgets.Length; i++)
+        {
+            if (newValue > 1)
+            {
+                newValue -= 1;
+                abilityWidgets[i].SetStaminaProgress(1);
+            }
+            else if (newValue > 0)
+            {
+                abilityWidgets[i].SetStaminaProgress(newValue);
+                newValue = 0;
+                break;
+            }
         }
     }
 

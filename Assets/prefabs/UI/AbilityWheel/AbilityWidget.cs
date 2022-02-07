@@ -17,12 +17,16 @@ public class AbilityWidget : MonoBehaviour
     [SerializeField] float HighlightedScale = 2.5f;
     private bool isExpanded;
 
-     Material CooldownMatt;
+    Material CooldownMatt;
+    Material StaminaMatt;
     internal void Start()
     {
         CooldownMatt = Instantiate(CoolDown.GetComponent<Image>().material);
         CoolDown.GetComponent<Image>().material = CooldownMatt;
         //CooldownMatt = CoolDown.GetComponent<Image>().material;
+
+        StaminaMatt = Instantiate(background.GetComponent<Image>().material);
+        background.GetComponent<Image>().material = StaminaMatt;
     }
 
     internal void Update()
@@ -45,6 +49,12 @@ public class AbilityWidget : MonoBehaviour
     {
         CooldownMatt.SetFloat("_Progress", progress);
     }
+
+    internal void SetStaminaProgress(float progress)
+    {
+        StaminaMatt.SetFloat("_Progress", progress);
+    }
+
 
     internal void SetExpand(bool isExpanded)
     {

@@ -18282,8 +18282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76915cb2f92d649b5ac4a64e8e83ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Steminalevel: 1
+  Staminalevel: 1
   MaxStaminaLevel: 5
+  StaminaDropRate: 0.05
+  StaminaDrainDelay: 2
   abilities:
   - {fileID: 11400000, guid: 5c6b141db9bfe684a9c1d88ab9978ee4, type: 2}
   - {fileID: 11400000, guid: 896ad33866e71544a8e2142ad43fb69a, type: 2}

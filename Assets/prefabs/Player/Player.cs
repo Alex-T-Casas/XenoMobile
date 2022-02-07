@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : Character
 {
     AbilityComponent abilityComp;
+    AbilityWheel abilityWheel;
     MovementComponent movementComp;
     InputActions inputActions;
     Animator animator;
@@ -30,10 +31,17 @@ public class Player : Character
     {
         inputActions = new InputActions();
         abilityComp = GetComponent<AbilityComponent>();
+        abilityWheel = FindObjectOfType<AbilityWheel>();
         if(abilityComp!=null)
         {
             abilityComp.onNewAbilityInitialzed += NewAbilityAdded;
+            abilityComp.onStaminaUpdated += StaminaUpdated;
         }
+    }
+
+    private void StaminaUpdated(float newValue)
+    {
+        abilityWheel.UpdateStamina(newValue);         
     }
 
     private void NewAbilityAdded(AbilityBase NewAbility)
@@ -106,6 +114,7 @@ public class Player : Character
         {
             switcher.onWeaponSwitchPressed += NextWeapon;
         }
+        abilityWheel.UpdateStamina(abilityComp.GetSteminaLevel());
 
     }
 
@@ -250,7 +259,7 @@ public class Player : Character
         }
     }
 
-    public override void NoHealthLeft()
+    public override void NoHealthLeft(GameObject killer)
     {
         base.NoHealthLeft();
         OnDisable();
