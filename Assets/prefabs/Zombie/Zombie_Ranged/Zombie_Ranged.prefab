@@ -274,7 +274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f408ae5c3b4d4234aab7603de1ee3012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHand: {x: 0, y: 0, z: 0}
+  StaminaReward: 0.5
+  CreditReward: 5
+  creditManager: {fileID: 4835845061659461872, guid: 2d3b62464a4f95b45931782f66bebaaa, type: 3}
   projectile: {fileID: 824292947583950967, guid: 420e002ffc5b36e4098591ab9d057c7e, type: 3}
 --- !u!114 &114531022265907074
 MonoBehaviour:

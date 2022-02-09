@@ -38,6 +38,7 @@ public class AbilityComponent : MonoBehaviour
             if (staminaDrainingCoroutine != null)
             {
                 StopCoroutine(staminaDrainingCoroutine);
+                Staminalevel = Staminalevel + ChangeValue;
                 staminaDrainingCoroutine = StartCoroutine(StaminaDrainingCoroutine());
             }
         }

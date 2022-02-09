@@ -70,6 +70,7 @@ public class Player : Character
             Weapons.Add(newWeapon);
         }
         EquipWeapon(0);
+        animator.SetFloat("FiringSpeed", CurrentWeapon.GetShootingSpeed());
     }
 
     void EquipWeapon(int weaponIndex)

@@ -247,6 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64207ac60b509249a1238d6c5a89372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StaminaReward: 0.5
+  CreditReward: 5
+  creditManager: {fileID: 4835845061659461872, guid: 2d3b62464a4f95b45931782f66bebaaa, type: 3}
   AttackRange: {fileID: 7372349810515782436}
 --- !u!114 &1076021880
 MonoBehaviour:
