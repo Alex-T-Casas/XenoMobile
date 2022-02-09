@@ -24,7 +24,7 @@ public class Player : Character
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
 
-    List<Weapon> Weapons;
+    List<Weapon> Weapons = new List<Weapon>();
     Weapon CurrentWeapon;
     int currentWeaponIndex = 0;
     private void Awake()
@@ -38,6 +38,19 @@ public class Player : Character
             abilityComp.onStaminaUpdated += StaminaUpdated;
         }
     }
+
+    internal void AquireNewWeapon(Weapon weapon, bool Equip)
+    {
+        Weapon newWeapon = Instantiate(weapon, GunSocket);
+        newWeapon.Owner = gameObject;
+        newWeapon.UnEquip();
+        Weapons.Add(newWeapon);
+        if (Equip)
+        {
+            EquipWeapon(Weapons.Count - 1);
+        }
+    }
+
 
     private void StaminaUpdated(float newValue)
     {
@@ -61,16 +74,11 @@ public class Player : Character
     }
     void InitializeWeapons()
     {
-        Weapons = new List<Weapon>();
         foreach (Weapon weapon in StartWeaponPrefabs)
         {
-            Weapon newWeapon = Instantiate(weapon, GunSocket);
-            newWeapon.Owner = gameObject;
-            newWeapon.UnEquip();
-            Weapons.Add(newWeapon);
+            AquireNewWeapon(weapon, false);
         }
         EquipWeapon(0);
-        animator.SetFloat("FiringSpeed", CurrentWeapon.GetShootingSpeed());
     }
 
     void EquipWeapon(int weaponIndex)
@@ -85,7 +93,8 @@ public class Player : Character
             currentWeaponIndex = weaponIndex;
             Weapons[weaponIndex].Equip();
             CurrentWeapon = Weapons[weaponIndex];
-            if(inGameUI!=null)
+            animator.SetFloat("FiringSpeed", CurrentWeapon.GetShootingSpeed());
+            if (inGameUI!=null)
             {
                 inGameUI.SwichedWeaponTo(CurrentWeapon);
             }

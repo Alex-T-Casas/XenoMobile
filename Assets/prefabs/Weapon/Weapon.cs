@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct WeaponInfo
+{
+    public string name;
+    public Sprite Icon;
+    public float DamagePerBullet;
+    public float ShootSpeed;
+    public int cost;
+
+}
+
 public class Weapon : MonoBehaviour
 {
     [SerializeField] Transform FirePoint;
@@ -9,6 +19,21 @@ public class Weapon : MonoBehaviour
     [SerializeField] float DamagePerBullet = 1;
     [SerializeField] Sprite WeaponIcon;
     [SerializeField] float ShootingSpeed = 1.0f;
+    [SerializeField] string WeaponName;
+    [SerializeField] int cost;
+
+    public WeaponInfo GetWeaponInfo()
+    {
+        return new WeaponInfo()
+        {
+            Icon = WeaponIcon,
+            name = WeaponName,
+            DamagePerBullet = this.DamagePerBullet,
+            ShootSpeed = this.ShootingSpeed,
+            cost = this.cost,
+
+        };
+    }
 
     public Sprite GetWeaponIcon() { return WeaponIcon; }
     public float GetDamagePerBullet() { return DamagePerBullet; }
