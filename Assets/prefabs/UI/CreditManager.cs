@@ -39,4 +39,9 @@ public class CreditManager : MonoBehaviour
     {
         creditCountUI.GetComponent<UnityEngine.UI.Text>().text = playerCredits.ToString();
     }
+
+    public int GetCredits()
+    {
+        return playerCredits;
+    }
 }

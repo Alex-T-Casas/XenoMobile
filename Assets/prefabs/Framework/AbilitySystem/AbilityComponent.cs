@@ -69,8 +69,8 @@ public class AbilityComponent : MonoBehaviour
         }
     }
 
-    internal int GetSteminaLevel()
+    internal float GetSteminaLevel()
     {
-        return (int)Staminalevel;
+        return Staminalevel;
     }
 }

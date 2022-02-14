@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class HealthComponent : MonoBehaviour
 
     public OnHealthChanged onHealthChanged;
     public OnNoHealthLeft noHealthLeft;
+
+   public float GetHealth()
+    {
+        return HitPoints;
+    }
 
     public void ChangeHealth(float changeAmount, GameObject Causer = null)
     {
@@ -49,4 +55,6 @@ public class HealthComponent : MonoBehaviour
     {
         onHealthChanged.Invoke(HitPoints, HitPoints, MaxHitPoints, gameObject);
     }
+
+
 }

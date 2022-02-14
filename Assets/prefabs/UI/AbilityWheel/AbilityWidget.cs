@@ -47,12 +47,20 @@ public class AbilityWidget : MonoBehaviour
 
     internal void SetCooldownProgress(float progress)
     {
-        CooldownMatt.SetFloat("_Progress", progress);
+        if (CooldownMatt != null)
+        {
+            CooldownMatt.SetFloat("_Progress", progress);
+        }
+   
     }
 
     internal void SetStaminaProgress(float progress)
     {
-        StaminaMatt.SetFloat("_Progress", progress);
+        if (CooldownMatt != null)
+        {
+            StaminaMatt.SetFloat("_Progress", progress);
+        }
+
     }
 
 
